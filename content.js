@@ -22,13 +22,18 @@
       const popup = document.createElement('div');
       
       popup.style.position = "absolute";
-      popup.style.left = (event.pageX - 150) + "px";
-      popup.style.top = (event.pageY - 150) + "px";
-      popup.style.transform = "translate(-50%, -100%)";
+      popup.style.left = (event.clientX) + "px";
+      popup.style.top = (event.clientY) + "px";
+      // popup.style.transform = "translate(-50%, -100%)";
       popup.innerText = translated;
-      popup.style.padding = "40px"
-      popup.style.backgroundColor = "red";
-      popup.style.color = "yellow";
+      popup.style.padding = "20px"
+      popup.style.backgroundColor = "#aaa";
+      popup.style.boxShadow = "2px, 2px, #bbb"
+      popup.style.textShadow = "2px, 2px, #bbb"
+      popup.style.borderRadius = "10px"
+      popup.style.color = "black";
+      popup.style.fontSize = "24px"
+      popup.style.fontFamily = "Arial"
       popup.style.zIndex = 9999;
 
       document.body.appendChild(popup);
