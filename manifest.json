@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Tool for translating polish words to english words fast",
+  "version": "1.0",
+  "description": "Translates marked words into english",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
