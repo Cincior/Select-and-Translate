@@ -2,7 +2,7 @@
    const popup = document.createElement('div');
    
    document.addEventListener('mouseup', async (event) => {
-      if(isSelected && !popup.contains(event.target)) {
+      if(isSelected) {
          popup.remove();
          isSelected = false;
          return
@@ -15,9 +15,15 @@
       const url = `https://api.mymemory.translated.net/get?q=${selectedText}&langpair=pl|en`;
 
       try {
-         const response = await fetch(url);
-         const data = await response.json();
-         const translated = data.responseData.translatedText;
+         let response = await fetch(url);
+         let data = await response.json();
+         let translated = data.responseData.translatedText;
+         if(translated.toLowerCase() == selectedText.toLowerCase()) {
+            const url = `https://api.mymemory.translated.net/get?q=${selectedText}&langpair=en|pl`;
+            response = await fetch(url);
+            data = await response.json();
+            translated = data.responseData.translatedText;
+         }
          console.log('Tlumaczenie: ' + translated);
          showTranslation(translated,event);
       } catch (e) {
@@ -28,8 +34,8 @@
 
    function showTranslation(translated, event) {
       popup.style.position = "absolute";
-      popup.style.left = (event.clientX) + "px";
-      popup.style.top = (event.clientY) + "px";
+      popup.style.left = (event.pageX) + "px";
+      popup.style.top = (event.pageY - 75) + "px";
       // popup.style.transform = "translate(-50%, -100%)";
       popup.innerText = translated;
       popup.style.padding = "20px"
