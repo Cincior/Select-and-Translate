@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tool for translating polish words to english words fast",
   "version": "1.0",
-  "description": "Translates marked words into english",
+  "description": "Translates selected words into english",
   "permissions": ["scripting", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
